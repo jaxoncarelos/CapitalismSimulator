@@ -1,0 +1,30 @@
+﻿.mainPanel{
+  align-self: flex-end;
+  width: 360px;
+  height: 120px;
+  background-color: #333;
+  border-radius: 0px 30px 0px 0px;
+  opacity: 0.9;
+}
+.moneyAmount{
+   color: white;
+   font-family: Poppins;
+   font-size: 25px;
+   top: 6px;
+  left: 15px;
+}
+.dollarSign{
+  font-size: 25px;
+  color: gold;
+  position: absolute;
+  top: 10px;
+  left: 4px;
+}
+.moneyPerClick{
+  position: absolute;
+  color: white;
+  font-family: Poppins;
+  font-size: 15px;
+  top: 40px;
+  left: 4px;
+}
