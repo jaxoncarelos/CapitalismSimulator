@@ -40,22 +40,13 @@ namespace ClickingGame
 
 			base.Respawn();
 		}
+		WorldInput WorldInput = new();
+		[Event("buildinput")]
 
-		/// <summary>
-		/// Called every tick, clientside and serverside.
-		/// </summary>
-		[Event.Frame]
-		public void UpdateWorldInput()
+		public override void BuildInput( InputBuilder input )
 		{
-			// Make a ray of where the local pawn is looking
-			var ray = new Ray( Local.Pawn.EyePos, Local.Pawn.EyeRot.Forward );
-
-			// Emulate the mouse buttons with any inputs we want
-			var leftMouseDown = Input.Down( InputButton.Attack1 );
-			var rightMouseDown = Input.Down( InputButton.Attack2 );
-			var scroll = new Vector2 { x = Input.MouseWheel }; // ( only x is used )
-
-			WorldInput.Update( ray, leftMouseDown, rightMouseDown, scroll );
+			WorldInput.Ray = WorldInput.Ray = Input.Cursor;
+			WorldInput.MouseLeftPressed = input.Down( InputButton.Attack1 );
 			
 		}
 		public override void Simulate( Client cl )

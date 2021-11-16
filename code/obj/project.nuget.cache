@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "eyac6uXEkVz0bd4b7/G8NOtL5if6Sq9Dpb1gW9kj32/vKA4EWjOIMz5mc6qmxsmDKCWbv/uRgt1L0dqBD2N3rQ==",
+  "dgSpecHash": "1hxzeqGa04Donje/NDwy1G8qDw2DMs8O/GWOj52JjH3IL3mivOtTCNV2G2Iv2t0ObZ6Iqv0EA7Ow3eDCqhkfFg==",
   "success": true,
-  "projectFilePath": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\sbox\\Addons\\clickinggame\\code\\clickinggame.csproj",
+  "projectFilePath": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\sbox\\addons\\clickinggame\\code\\clickinggame.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
