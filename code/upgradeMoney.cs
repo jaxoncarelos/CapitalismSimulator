@@ -1,8 +1,7 @@
-﻿using System;
-using System.Diagnostics.Tracing;
-using Sandbox;
+﻿using Sandbox;
 using Sandbox.UI;
 using Sandbox.UI.Construct;
+using System;
 
 namespace ClickingGame
 {
@@ -14,28 +13,39 @@ namespace ClickingGame
 
 		public upgradeMoney()
 		{
-			StyleSheet.Load("upgradeMoneyPanel.scss"  );
+			StyleSheet.Load( "upgradeMoneyPanel.scss" );
 			backPanel = Add.Panel( "backPanel" );
 			moneyAmount = backPanel.Add.Label( "", "moneyAmount" );
 			upgradeMoneyPerClick = backPanel.Add.Button( "Upgrade", "upgradeMoneyPerClick" );
 			upgradeMoneyPerClick.AddEventListener( "onclick", () =>
 			{
-				Log.Info( "clicked" );
 				var player = (Local.Pawn as ClickingPlayer);
+
 				if ( player.playerMoneyAmount >= player.nextCosts[player.playerMoneyLevel] )
 				{
 					ConsoleSystem.Run( "jhsjsjsfgh" );
+
+					string steamid = Convert.ToString( Local.Client.PlayerId );
+					var data = new ClickingData();
+					data.SteamId = steamid;
+					data.playerMoneyAmount = player.playerMoneyAmount;
+					data.playerMoneyChange = player.playerMoneyChangeAmount;
+					data.playerMoneyLevel = player.playerMoneyLevel;
+					ClickingGame.WebSocketClient.Send( data );
 				}
 			} );
 		}
-		
 
+		public TimeSince timeSinceSave;
 		public override void Tick()
 		{
-			var ply = (Local.Pawn as ClickingPlayer);
-			moneyAmount.Text = "$" + Convert.ToString( ply.nextCosts[ply.playerMoneyLevel]  );
-			
-			
+			var player = (Local.Pawn as ClickingPlayer);
+			moneyAmount.Text = "$" + Convert.ToString( player.nextCosts[player.playerMoneyLevel] );
+
+			if ( timeSinceSave > 5 )
+			{
+
+			}
 		}
 	}
 }
