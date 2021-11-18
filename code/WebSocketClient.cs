@@ -11,19 +11,9 @@ namespace ClickingGame
 	{
 		private WebSocket _webSocket;
 		private readonly string _connectString = "ws://137.184.92.111:5001/";
-		private readonly int _maxMessageSize = 128;
-
-		/// <summary>
-		/// LastMessage stores the last message received.
-		/// </summary>
-		public string LastMessage { get; set; }
-
-		/// <summary>
-		/// Constructor for WebSocketExample
-		/// </summary>
 		public WebSocketClient()
 		{
-			_webSocket = new WebSocket( _maxMessageSize );
+			_webSocket = new WebSocket();
 			_webSocket.OnMessageReceived += OnMessage;
 
 		}
@@ -67,14 +57,6 @@ namespace ClickingGame
 			string jsonString = JsonSerializer.Serialize( data );
 			await _webSocket.Send( jsonString );
 		}
-
-
-		/// <summary>
-		/// Method to handle a received message.
-		/// </summary>
-		/// <param name="message">The message being received.</param>
-
-
 	}
 }
 

@@ -24,6 +24,7 @@ namespace ClickingGame
 				if ( player.playerMoneyAmount >= player.nextCosts[player.playerMoneyLevel] )
 				{
 					ConsoleSystem.Run( "jhsjsjsfgh" );
+
 					string steamid = Convert.ToString( Local.Client.PlayerId );
 					var data = new ClickingData();
 					data.SteamId = steamid;
