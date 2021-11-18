@@ -30,8 +30,6 @@ namespace ClickingGame
 
 		private void OnMessage( string message )
 		{
-
-
 			ConsoleSystem.Run( "hsadhasjhdgkjs", message );
 		}
 

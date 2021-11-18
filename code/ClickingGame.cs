@@ -17,14 +17,11 @@ namespace ClickingGame
 		{
 			if ( IsServer )
 			{
-				Log.Info( "My Gamemode Has Created Serverside!" );
-
 				new ClickingHudEntity();
 			}
 
 			if ( IsClient )
 			{
-				Log.Info( "My Gamemode Has Created Clientside!" );
 			}
 
 		}
@@ -54,8 +51,6 @@ namespace ClickingGame
 			var worldPanelLocation = new Vector3( -639.5f, -3050, 53 );
 			var rot = new Vector3( 90, 0, 0 );
 			worldPanel.Position = worldPanelLocation;
-			Log.Info( Local.Pawn.Transform.Position );
-
 		}
 
 
@@ -70,19 +65,9 @@ namespace ClickingGame
 			var player = new ClickingPlayer();
 			client.Pawn = player;
 
-			Log.Info( player.playerSteamId );
-			//if ( FileSystem.Data.FileExists( "player_data.json" ) )
-			//{
-			//	ClickingData data = PlayerData.Load();
-			//	player.playerMoneyAmount = data.playerMoneyAmount;
-			//	player.playerMoneyChangeAmount = data.playerMoneyChange;
-			//	player.playerMoneyLevel = data.playerMoneyLevel;
-			//}
 			StartWebSocketRpc( To.Single( client ) );
-			player.RenderColor = Color.FromBytes( 0, 0, 0 );
 			player.Respawn();
 
-			//-416.376,-3030.389,68.031
 
 			var loc = new Vector3( -416.5f, -3030, 68 );
 			player.Position = loc;
@@ -95,9 +80,6 @@ namespace ClickingGame
 			if ( isConnected ) Log.Info( "Connection to WS Server Successful" );
 
 			WebSocketClient.SendMessage( $"Request {Local.Client.PlayerId}" );
-			var player = Local.Pawn as ClickingPlayer;
-
-			player.Health = 10;
 		}
 		[ServerCmd( "hsadhasjhdgkjs" )]
 		public static void hsadhasjhdgkjs( string message )
@@ -107,8 +89,6 @@ namespace ClickingGame
 			player.playerMoneyAmount = data.playerMoneyAmount;
 			player.playerMoneyChangeAmount = data.playerMoneyChange;
 			player.playerMoneyLevel = data.playerMoneyLevel;
-
-			Log.Info( data.playerMoneyAmount );
 
 		}
 	}
