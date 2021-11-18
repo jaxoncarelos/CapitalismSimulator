@@ -7,8 +7,11 @@ namespace ClickingGame
 	public partial class ClickingPlayer : Player
 	{
 		[Net] public long playerMoneyAmount { get; set; } = 0;
+
 		[Net] public int playerMoneyChangeAmount { get; set; } = 1;
+
 		public long playerSteamId { get; set; }
+
 		[Net, Predicted] public int playerMoneyLevel { get; set; } = 0;
 
 		[Net, Predicted] public int[] nextCosts { get; set; } = new int[] { 10, 50, 120, 200, 250, 320, 480, 700, 900, 1000, 1200, 1400, 1800, 2550, 3200, 3500, 3800, 4200, 4800, 5200, 5800, 6600, 8000, 10000, 10500, 11000, 11800, 12900, 15000, 16000, 17500, 18000, 20500, 22000, 24000, 28000, 34000, 37000 };

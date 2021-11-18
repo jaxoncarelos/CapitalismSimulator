@@ -24,24 +24,27 @@ namespace ClickingGame
 				if ( player.playerMoneyAmount >= player.nextCosts[player.playerMoneyLevel] )
 				{
 					ConsoleSystem.Run( "jhsjsjsfgh" );
+					string steamid = Convert.ToString( Local.Client.PlayerId );
+					var data = new ClickingData();
+					data.SteamId = steamid;
+					data.playerMoneyAmount = player.playerMoneyAmount;
+					data.playerMoneyChange = player.playerMoneyChangeAmount;
+					data.playerMoneyLevel = player.playerMoneyLevel;
+					ClickingGame.WebSocketClient.Send( data );
 				}
 			} );
 		}
 
-
+		public TimeSince timeSinceSave;
 		public override void Tick()
 		{
 			var player = (Local.Pawn as ClickingPlayer);
 			moneyAmount.Text = "$" + Convert.ToString( player.nextCosts[player.playerMoneyLevel] );
 
-			var steamid = Local.Client.PlayerId;
-			var data = new ClickingData();
-			data.SteamId = steamid;
-			data.playerMoneyAmount = player.playerMoneyAmount;
-			data.playerMoneyChange = player.playerMoneyChangeAmount;
-			data.playerMoneyLevel = player.playerMoneyLevel;
+			if ( timeSinceSave > 5 )
+			{
 
-			ClickingGame.WebSocketClient.Send( data );
+			}
 		}
 	}
 }

@@ -4,7 +4,7 @@ namespace ClickingGame
 {
 	public class ClickingData
 	{
-		public long SteamId { get; set; }
+		public string SteamId { get; set; }
 		public long playerMoneyAmount { get; set; }
 		public int playerMoneyChange { get; set; }
 		public int playerMoneyLevel { get; set; }

@@ -10,7 +10,7 @@ namespace ClickingGame
 	public class WebSocketClient
 	{
 		private WebSocket _webSocket;
-		private readonly string _connectString = "ws://137.184.92.111:5000/";
+		private readonly string _connectString = "ws://137.184.92.111:5001/";
 		private readonly int _maxMessageSize = 128;
 
 		/// <summary>
@@ -24,8 +24,15 @@ namespace ClickingGame
 		public WebSocketClient()
 		{
 			_webSocket = new WebSocket( _maxMessageSize );
-			_webSocket.OnMessageReceived += MessageReceived;
+			_webSocket.OnMessageReceived += OnMessage;
 
+		}
+
+		private void OnMessage( string message )
+		{
+
+
+			ConsoleSystem.Run( "hsadhasjhdgkjs", message );
 		}
 
 		public async void SendMessage( string message )
@@ -68,10 +75,6 @@ namespace ClickingGame
 		/// Method to handle a received message.
 		/// </summary>
 		/// <param name="message">The message being received.</param>
-		private void MessageReceived( string message )
-		{
-			LastMessage = message;
-		}
 
 
 	}

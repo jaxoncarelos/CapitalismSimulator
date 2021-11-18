@@ -1,5 +1,5 @@
 ﻿using Sandbox;
-
+using System.Text.Json;
 
 namespace ClickingGame
 {
@@ -42,6 +42,8 @@ namespace ClickingGame
 				player.playerMoneyChangeAmount++;
 				player.playerMoneyLevel++;
 				player.playerMoneyAmount -= player.nextCosts[player.playerMoneyLevel - 1];
+
+
 			}
 		}
 
@@ -91,13 +93,23 @@ namespace ClickingGame
 			WebSocketClient = new WebSocketClient();
 			bool isConnected = await WebSocketClient.Connect();
 			if ( isConnected ) Log.Info( "Connection to WS Server Successful" );
+
 			WebSocketClient.SendMessage( $"Request {Local.Client.PlayerId}" );
+			var player = Local.Pawn as ClickingPlayer;
+
+			player.Health = 10;
 		}
-		[ServerCmd( "send" )]
-		public static void Send( string message )
+		[ServerCmd( "hsadhasjhdgkjs" )]
+		public static void hsadhasjhdgkjs( string message )
 		{
-			var player = ConsoleSystem.Caller;
-			Log.Info( player.PlayerId );
+			var player = ConsoleSystem.Caller.Pawn as ClickingPlayer;
+			ClickingData data = JsonSerializer.Deserialize<ClickingData>( message );
+			player.playerMoneyAmount = data.playerMoneyAmount;
+			player.playerMoneyChangeAmount = data.playerMoneyChange;
+			player.playerMoneyLevel = data.playerMoneyLevel;
+
+			Log.Info( data.playerMoneyAmount );
+
 		}
 	}
 
