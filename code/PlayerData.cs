@@ -1,18 +1,18 @@
-﻿using System;
-using Sandbox;
+﻿using Sandbox;
 
 namespace ClickingGame
 {
 	public class ClickingData
 	{
+		public long SteamId { get; set; }
 		public long playerMoneyAmount { get; set; }
-		public int playerMoneyChange{ get; set; }
-		public int playerMoneyLevel{ get; set; }
+		public int playerMoneyChange { get; set; }
+		public int playerMoneyLevel { get; set; }
 	}
 	public class PlayerData
 	{
-		
-		public static void Save( ClickingPlayer player)
+
+		public static void Save( ClickingPlayer player )
 		{
 			ClickingData data = new ClickingData
 			{
@@ -20,7 +20,7 @@ namespace ClickingGame
 				playerMoneyChange = player.playerMoneyChangeAmount,
 				playerMoneyLevel = player.playerMoneyLevel
 			};
-			FileSystem.Data.WriteJson("player_data.json", data);
+			FileSystem.Data.WriteJson( "player_data.json", data );
 		}
 
 		public static ClickingData Load()
